@@ -1,67 +1,27 @@
-const TOKEN_PATTERN = /id=['"]token['"] *name=['"]token['"] *value=['"](.*?)['"] *\/>/;
 const ALERT_PATTERN = /alert\(['"](.*?)['"]\);/;
 
 var courses = null;
-var intervalId = null;
+var abort = false;
+var finished = false;
 var baseFormData = null;
 var courseFrame = document.getElementById("iframename");
 var queryForm = courseFrame.contentWindow.document.getElementById("queryform");
 
-function getToken(callback) {
-    var formData = new FormData();
-    formData.append("pageXklb", baseFormData.get("pageXklb"));
-    formData.append("pageXnxq", baseFormData.get("pageXnxq"));
-
-    var request = new XMLHttpRequest();
-    request.open("POST", "/xsxk/queryXsxkList");
-    request.send(formData);
-    request.onreadystatechange = function() {
-        if (request.readyState === 4) {
-            if (request.status === 200) {
-                var token = TOKEN_PATTERN.exec(request.responseText)[1];
-                console.log(token);
-                callback(token);
-            }
-        }
-    };
-}
-
 function selectCourse(course) {
     var formData = new FormData();
-    var request = new XMLHttpRequest();
     baseFormData.forEach((value, key) => {
         formData.append(key, value);
     });
     formData.set("rwh", course.courseNo);
-    request.open("POST", "/xsxk/saveXsxk");
 
-    getToken(function(token) {
-        formData.set("token", token);
-        request.send(formData);
-        request.onreadystatechange = function() {
-            if (request.readyState === 4) {
-                if (request.status === 200) {
-                    var msg = ALERT_PATTERN.exec(request.responseText)[1];
-                    if (msg.includes("选课成功")) {
-                        course.selected = true;
-                    }
-                }
-            }
-        };
-    });
-}
-
-function watchCourses() {
-    var finished = true;
-    courses.forEach(course => {
-        if (!course.selected) {
-            selectCourse(course);
+    var request = new XMLHttpRequest();
+    request.open("POST", "/xsxk/saveXsxk", false);
+    request.send(formData);
+    if (request.status === 200) {
+        var msg = ALERT_PATTERN.exec(request.responseText)[1];
+        if (msg.includes("选课成功")) {
+            course.selected = true;
         }
-        finished = finished & course.selected;
-    });
-
-    if (finished) {
-        clearInterval(intervalId);
     }
 }
 
@@ -71,13 +31,19 @@ function start(courseNos) {
         courses.push({ courseNo: courseNo, selected: false });
     });
     baseFormData = new FormData(queryForm);
-    intervalId = setInterval(watchCourses, 3000);
+    while (!finished && !abort) {
+        finished = true;
+        courses.forEach(course => {
+            if (!course.selected && !abort) {
+                selectCourse(course);
+            }
+            finished &= course.selected;
+        });
+    }
 }
 
 function stop() {
-    if (intervalId) {
-        clearInterval(intervalId);
-    }
+    abort = true;
 }
 
 function getTable() {
