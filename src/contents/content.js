@@ -1,46 +1,65 @@
-window.oldAlert = window.alert;
-window.alert = function(msg) {
-    window.selectStatus = msg;
-};
+const ALERT_PATTERN = /alert\(['"](.*?)['"]\);/;
 
+var courses = null;
 var intervalId = null;
+var baseFormData = null;
 var courseFrame = document.getElementById("iframename");
-var courseFrameDocument = courseFrame.contentWindow.document;
-var refreshButton = document.getElementById("person_info2");
-var courseButton = courseFrameDocument.getElementById("2018-2019-3-CS33903B-001");
+var queryForm = courseFrame.contentWindow.document.getElementById("queryform");
 
-function selectCourse() {
-    refreshButton.click();
-    courseButton.click();
-    if (window.selectStatus && window.selectStatus === "选课成功") {
-        window.oldAlert("选课成功");
+function selectCourse(course) {
+    var formData = new FormData();
+    var request = new XMLHttpRequest();
+    baseFormData.forEach((value, key) => {
+        formData.append(key, value);
+    });
+
+    formData.set("rwh", course.courseNo);
+    request.open("POST", "/xsxk/saveXsxk");
+    request.send(formData);
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                var msg = ALERT_PATTERN.exec(request.responseText)[1];
+                if (msg.includes("选课成功")) {
+                    course.selected = true;
+                }
+            }
+        }
+    };
+}
+
+function watchCourses() {
+    var finished = true;
+    courses.forEach(course => {
+        if (!course.selected) {
+            selectCourse(course);
+        }
+        finished = finished & course.selected;
+    });
+
+    if (finished) {
         clearInterval(intervalId);
     }
 }
 
-chrome.runtime.onMessage.addListener(function(message, sender, callback) {
-    switch (message) {
-        case "start":
-            intervalId = setInterval(selectCourse, 3000);
-            break;
-        case "stop":
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
-            break;
-        default:
-            break;
-    }
+function start(courseNos) {
+    courses = new Array();
+    courseNos.forEach(courseNo => {
+        courses.push({ courseNo: courseNo, selected: false });
+    });
+    baseFormData = new FormData(queryForm);
+    intervalId = setInterval(watchCourses, 3000);
+}
 
-    if (callback) {
-        callback();
+function stop() {
+    if (intervalId) {
+        clearInterval(intervalId);
     }
-});
+}
 
-var getTable = function() {
+function getTable() {
     courseFrame = document.getElementById("iframename");
-    courseFrameDocument = courseFrame.contentWindow.document;
-    var courseTable = courseFrameDocument.getElementsByClassName("bot_line");
+    var courseTable = courseFrame.contentWindow.document.getElementsByClassName("bot_line");
     if (courseTable && courseTable[0] && courseTable[0].childNodes[1]) {
         courseTable = courseTable[0].childNodes[1];
         if (courseTable.children.length > 1) {
@@ -48,9 +67,9 @@ var getTable = function() {
         }
     }
     return undefined;
-};
+}
 
-var test = function() {
+courseFrame.onload = function() {
     var courseTable = getTable();
     if (courseTable) {
         var submit = document.createElement("button");
@@ -90,5 +109,3 @@ var test = function() {
         }
     }
 };
-
-courseFrame.addEventListener("load", test);
