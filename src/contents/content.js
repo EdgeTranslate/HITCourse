@@ -1,6 +1,7 @@
 const TOKEN_PATTERN = /id=['"]token['"] *name=['"]token['"] *value=['"](.*?)['"] *\/>/;
 const ALERT_PATTERN = /alert\(['"](.*?)['"]\);/;
 
+var locked = false;
 var courses = null;
 var intervalId = null;
 var baseFormData = null;
@@ -19,7 +20,6 @@ function getToken(callback) {
         if (request.readyState === 4) {
             if (request.status === 200) {
                 var token = TOKEN_PATTERN.exec(request.responseText)[1];
-                console.log(token);
                 callback(token);
             }
         }
@@ -27,28 +27,34 @@ function getToken(callback) {
 }
 
 function selectCourse(course) {
-    var formData = new FormData();
-    var request = new XMLHttpRequest();
-    baseFormData.forEach((value, key) => {
-        formData.append(key, value);
-    });
-    formData.set("rwh", course.courseNo);
-    request.open("POST", "/xsxk/saveXsxk");
+    if (!locked) {
+        locked = true;
+        var formData = new FormData();
+        var request = new XMLHttpRequest();
+        baseFormData.forEach((value, key) => {
+            formData.append(key, value);
+        });
+        formData.set("rwh", course.courseNo);
+        request.open("POST", "/xsxk/saveXsxk");
 
-    getToken(function(token) {
-        formData.set("token", token);
-        request.send(formData);
-        request.onreadystatechange = function() {
-            if (request.readyState === 4) {
-                if (request.status === 200) {
-                    var msg = ALERT_PATTERN.exec(request.responseText)[1];
-                    if (msg.includes("选课成功")) {
-                        course.selected = true;
+        getToken(function(token) {
+            formData.set("token", token);
+            request.send(formData);
+            request.onreadystatechange = function() {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        var msg = ALERT_PATTERN.exec(request.responseText)[1];
+                        if (msg.includes("选课成功")) {
+                            course.selected = true;
+                            // eslint-disable-next-line no-console
+                            console.log("Course " + course.courseNo + " selected.");
+                        }
                     }
+                    locked = false;
                 }
-            }
-        };
-    });
+            };
+        });
+    }
 }
 
 function watchCourses() {
