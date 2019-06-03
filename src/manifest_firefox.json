@@ -1,0 +1,15 @@
+{
+    "applications": {
+        "gecko": {
+            "id": "",
+            "strict_min_version": "48.0"
+        }
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Alt+P"
+            }
+        }
+    }
+}

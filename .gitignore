@@ -1,0 +1,7 @@
+/build/
+/node_modules/
+/publish/
+*.zip
+*.crx
+*.pem
+package-lock.json

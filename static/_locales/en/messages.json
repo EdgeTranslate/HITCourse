@@ -1,0 +1,610 @@
+{
+    "AppName": {
+        "message": "Edge Translate",
+        "description": "App Name"
+    },
+    "Description": {
+        "message": "Translate what you want.",
+        "description": "App Description"
+    },
+    "ChangeLanguageSetting": {
+        "message": "Change language settings",
+        "description": "Change language setting"
+    },
+    "TranslateSelectedText": {
+        "message": "Translate selected text",
+        "description": "Shortcut for translating selected text."
+    },
+    "FixResultFrame": {
+        "message": "Fix the result frame",
+        "description": "Fix the translating result frame."
+    },
+    "CloseResultFrame": {
+        "message": "Close the result frame",
+        "description": "Close the translating result frame."
+    },
+    "ExchangeSourceAndTargetLanguage": {
+        "message": "Exchange source and target language",
+        "description": "Exchange source and target language."
+    },
+    "CommonMeanings": {
+        "message": "Common Meanings",
+        "description": "Common Meanings"
+    },
+    "DetailedMeanings": {
+        "message": "Detailed Meanings",
+        "description": "Detailed Meanings"
+    },
+    "Definitions": {
+        "message": "Definitions",
+        "description": "Definitions"
+    },
+    "DefinitionsMeaning": {
+        "message": "Meaning",
+        "description": "Definition Meaning"
+    },
+    "DefinitionsExample": {
+        "message": "Example",
+        "description": "Definition Example"
+    },
+    "Synonyms": {
+        "message": "Synonyms",
+        "description": "Synonyms"
+    },
+    "OriginalText": {
+        "message": "Orignal Text",
+        "description": "The original text to be translated."
+    },
+    "Phrases": {
+        "message": "Phrases",
+        "description": "Phrases"
+    },
+    "Examples": {
+        "message": "Examples",
+        "description": "Examples"
+    },
+    "PhoneticSymbol": {
+        "message": "Phonetic Symbol",
+        "description": "Phonetic Symbol"
+    },
+    "PronounceOriginal": {
+        "message": "Read original text",
+        "description": "Read original text."
+    },
+    "PronounceTranslated": {
+        "message": "Read translated text",
+        "description": "Read translated text."
+    },
+    "Translate": {
+        "message": "Translate",
+        "description": "Translate"
+    },
+    "ShortcutSetting": {
+        "message": "Shortcut Setting",
+        "description": "Change shortcuts."
+    },
+    "AddUrlBlacklist": {
+        "message": "Add this site to blacklist",
+        "description": "Add currently browsering site to blacklist."
+    },
+    "RemoveUrlBlacklist": {
+        "message": "Remove this site from blacklist",
+        "description": "Remove currently browsering site from blacklist."
+    },
+    "AddDomainBlacklist": {
+        "message": "Add this domain to blacklist",
+        "description": "Add the domain of currently browsering site to blacklist."
+    },
+    "RemoveDomainBlacklist": {
+        "message": "Remove this domain from blacklist",
+        "description": "Remove the domain of currently browsering site from blacklist."
+    },
+    "ExtensionInstalled": {
+        "message": "Edge Translate installed successfully! Click to read the wiki!",
+        "description": "Inform user that the extension has been installed."
+    },
+    "ExtensionUpdated": {
+        "message": "Edge Translate updated successfully! Click to find what's new!.",
+        "description": "Inform user that the extension has been updated."
+    },
+    "InputHint": {
+        "message": "Content should not be empty",
+        "description": "Input hint"
+    },
+    "AutoDetect": {
+        "message": "Auto Detect",
+        "description": "Auto Detect"
+    },
+    "SourceLanguage": {
+        "message": "Source Language",
+        "description": "Source Language"
+    },
+    "TargetLanguage": {
+        "message": "Target Language",
+        "description": "Target Language"
+    },
+    "PermissionRemind": {
+        "message": "Please open the 'Allow access to file URLs'switch in the extension management page",
+        "description": "a hint to the user about the access to file url permission"
+    },
+    "ContentSettings": {
+        "message": "Content Settings",
+        "description": "Choose what to display in the translating results."
+    },
+    "LayoutSettings": {
+        "message": "Layout Settings",
+        "description": "Choose how to display the translating results."
+    },
+    "PopupFromRight": {
+        "message": "Popup from the right",
+        "description": "Translating results popup from the right."
+    },
+    "PopupFromLeft": {
+        "message": "Popup from the left",
+        "description": "Translating results popup from the left."
+    },
+    "ResizeSetting": {
+        "message": "Resize page",
+        "description": "Resize page to avoid occlude original content"
+    },
+    "OtherSettings": {
+        "message": "Other Settings",
+        "description": "Other settings of the extension."
+    },
+    "SelectTranslate": {
+        "message": "Enable Select Translate",
+        "description": "Enable or disable select translate."
+    },
+    "UsePDFjs": {
+        "message": "Use Built-in PDF Viewer",
+        "description": "Use extension's built-in pdf viewer to enable selecting translate in pdf files."
+    },
+    "TranslateAfterSelect": {
+        "message": "Translate After Select",
+        "description": "Instantly show translating result after texts selected."
+    },
+    "TranslateAfterDblClick": {
+        "message": "Translate After Dbl Click",
+        "description": "Instantly show translating result after double-clicked texts."
+    },
+    "TranslatePageYouDao": {
+        "message": "Translate this page with YouDao",
+        "description": "Translate current page with YouDao translate api."
+    },
+    "TranslatePageGoogle": {
+        "message": "Translate this page with Google",
+        "description": "Translate current page with Google translate api."
+    },
+    "Afrikaans": {
+        "message": "Afrikaans",
+        "description": "Afrikaans"
+    },
+    "Albanian": {
+        "message": "Albanian",
+        "description": "Albanian"
+    },
+    "Amharic": {
+        "message": "Amharic",
+        "description": "Amharic"
+    },
+    "Arabic": {
+        "message": "Arabic",
+        "description": "Arabic"
+    },
+    "Armenian": {
+        "message": "Armenian",
+        "description": "Armenian"
+    },
+    "Azerbaijani": {
+        "message": "Azerbaijani",
+        "description": "Azerbaijani"
+    },
+    "Basque": {
+        "message": "Basque",
+        "description": "Basque"
+    },
+    "Belarusian": {
+        "message": "Belarusian",
+        "description": "Belarusian"
+    },
+    "Bengali": {
+        "message": "Bengali",
+        "description": "Bengali"
+    },
+    "Bosnian": {
+        "message": "Bosnian",
+        "description": "Bosnian"
+    },
+    "Bulgarian": {
+        "message": "Bulgarian",
+        "description": "Bulgarian"
+    },
+    "Catalan": {
+        "message": "Catalan",
+        "description": "Catalan"
+    },
+    "Cebuano": {
+        "message": "Cebuano",
+        "description": "Cebuano"
+    },
+    "Chichewa": {
+        "message": "Chichewa",
+        "description": "Chichewa"
+    },
+    "ChineseSimplified": {
+        "message": "Chinese Simplified",
+        "description": "Chinese Simplified"
+    },
+    "ChineseTraditional": {
+        "message": "Chinese Traditional",
+        "description": "Chinese Traditional"
+    },
+    "Corsican": {
+        "message": "Corsican",
+        "description": "Corsican"
+    },
+    "Croatian": {
+        "message": "Croatian",
+        "description": "Croatian"
+    },
+    "Czech": {
+        "message": "Czech",
+        "description": "Czech"
+    },
+    "Danish": {
+        "message": "Danish",
+        "description": "Danish"
+    },
+    "Dutch": {
+        "message": "Dutch",
+        "description": "Dutch"
+    },
+    "English": {
+        "message": "English",
+        "description": "English"
+    },
+    "Esperanto": {
+        "message": "Esperanto",
+        "description": "Esperanto"
+    },
+    "Estonian": {
+        "message": "Estonian",
+        "description": "Estonian"
+    },
+    "Filipino": {
+        "message": "Filipino",
+        "description": "Filipino"
+    },
+    "Finnish": {
+        "message": "Finnish",
+        "description": "Finnish"
+    },
+    "French": {
+        "message": "French",
+        "description": "French"
+    },
+    "Frisian": {
+        "message": "Frisian",
+        "description": "Frisian"
+    },
+    "Galician": {
+        "message": "Galician",
+        "description": "Galician"
+    },
+    "Georgian": {
+        "message": "Georgian",
+        "description": "Georgian"
+    },
+    "German": {
+        "message": "German",
+        "description": "German"
+    },
+    "Greek": {
+        "message": "Greek",
+        "description": "Greek"
+    },
+    "Gujarati": {
+        "message": "Gujarati",
+        "description": "Gujarati"
+    },
+    "HaitianCreole": {
+        "message": "Haitian Creole",
+        "description": "Haitian Creole"
+    },
+    "Hausa": {
+        "message": "Hausa",
+        "description": "Hausa"
+    },
+    "Hawaiian": {
+        "message": "Hawaiian",
+        "description": "Hawaiian"
+    },
+    "Hebrew": {
+        "message": "Hebrew",
+        "description": "Hebrew"
+    },
+    "Hindi": {
+        "message": "Hindi",
+        "description": "Hindi"
+    },
+    "Hmong": {
+        "message": "Hmong",
+        "description": "Hmong"
+    },
+    "Hungarian": {
+        "message": "Hungarian",
+        "description": "Hungarian"
+    },
+    "Icelandic": {
+        "message": "Icelandic",
+        "description": "Icelandic"
+    },
+    "Igbo": {
+        "message": "Igbo",
+        "description": "Igbo"
+    },
+    "Indonesian": {
+        "message": "Indonesian",
+        "description": "Indonesian"
+    },
+    "Irish": {
+        "message": "Irish",
+        "description": "Irish"
+    },
+    "Italian": {
+        "message": "Italian",
+        "description": "Italian"
+    },
+    "Japanese": {
+        "message": "Japanese",
+        "description": "Japanese"
+    },
+    "Javanese": {
+        "message": "Javanese",
+        "description": "Javanese"
+    },
+    "Kannada": {
+        "message": "Kannada",
+        "description": "Kannada"
+    },
+    "Kazakh": {
+        "message": "Kazakh",
+        "description": "Kazakh"
+    },
+    "Khmer": {
+        "message": "Khmer",
+        "description": "Khmer"
+    },
+    "Korean": {
+        "message": "Korean",
+        "description": "Korean"
+    },
+    "Kurdish": {
+        "message": "Kurdish (Kurmanji)",
+        "description": "Kurdish (Kurmanji)"
+    },
+    "Kyrgyz": {
+        "message": "Kyrgyz",
+        "description": "Kyrgyz"
+    },
+    "Lao": {
+        "message": "Lao",
+        "description": "Lao"
+    },
+    "Latin": {
+        "message": "Latin",
+        "description": "Latin"
+    },
+    "Latvian": {
+        "message": "Latvian",
+        "description": "Latvian"
+    },
+    "Lithuanian": {
+        "message": "Lithuanian",
+        "description": "Lithuanian"
+    },
+    "Luxembourgish": {
+        "message": "Luxembourgish",
+        "description": "Luxembourgish"
+    },
+    "Macedonian": {
+        "message": "Macedonian",
+        "description": "Macedonian"
+    },
+    "Malagasy": {
+        "message": "Malagasy",
+        "description": "Malagasy"
+    },
+    "Malay": {
+        "message": "Malay",
+        "description": "Malay"
+    },
+    "Malayalam": {
+        "message": "Malayalam",
+        "description": "Malayalam"
+    },
+    "Maltese": {
+        "message": "Maltese",
+        "description": "Maltese"
+    },
+    "Maori": {
+        "message": "Maori",
+        "description": "Maori"
+    },
+    "Marathi": {
+        "message": "Marathi",
+        "description": "Marathi"
+    },
+    "Mongolian": {
+        "message": "Mongolian",
+        "description": "Mongolian"
+    },
+    "Myanmar": {
+        "message": "Myanmar (Burmese)",
+        "description": "Myanmar (Burmese)"
+    },
+    "Nepali": {
+        "message": "Nepali",
+        "description": "Nepali"
+    },
+    "Norwegian": {
+        "message": "Norwegian",
+        "description": "Norwegian"
+    },
+    "Pashto": {
+        "message": "Pashto",
+        "description": "Pashto"
+    },
+    "Persian": {
+        "message": "Persian",
+        "description": "Persian"
+    },
+    "Polish": {
+        "message": "Polish",
+        "description": "Polish"
+    },
+    "Portuguese": {
+        "message": "Portuguese",
+        "description": "Portuguese"
+    },
+    "Punjabi": {
+        "message": "Punjabi",
+        "description": "Punjabi"
+    },
+    "Romanian": {
+        "message": "Romanian",
+        "description": "Romanian"
+    },
+    "Russian": {
+        "message": "Russian",
+        "description": "Russian"
+    },
+    "Samoan": {
+        "message": "Samoan",
+        "description": "Samoan"
+    },
+    "ScotsGaelic": {
+        "message": "Scots Gaelic",
+        "description": "Scots Gaelic"
+    },
+    "Serbian": {
+        "message": "Serbian",
+        "description": "Serbian"
+    },
+    "Sesotho": {
+        "message": "Sesotho",
+        "description": "Sesotho"
+    },
+    "Shona": {
+        "message": "Shona",
+        "description": "Shona"
+    },
+    "Sindhi": {
+        "message": "Sindhi",
+        "description": "Sindhi"
+    },
+    "Sinhala": {
+        "message": "Sinhala",
+        "description": "Sinhala"
+    },
+    "Slovak": {
+        "message": "Slovak",
+        "description": "Slovak"
+    },
+    "Slovenian": {
+        "message": "Slovenian",
+        "description": "Slovenian"
+    },
+    "Somali": {
+        "message": "Somali",
+        "description": "Somali"
+    },
+    "Spanish": {
+        "message": "Spanish",
+        "description": "Spanish"
+    },
+    "Sundanese": {
+        "message": "Sundanese",
+        "description": "Sundanese"
+    },
+    "Swahili": {
+        "message": "Swahili",
+        "description": "Swahili"
+    },
+    "Swedish": {
+        "message": "Swedish",
+        "description": "Swedish"
+    },
+    "Tajik": {
+        "message": "Tajik",
+        "description": "Tajik"
+    },
+    "Tamil": {
+        "message": "Tamil",
+        "description": "Tamil"
+    },
+    "Telugu": {
+        "message": "Telugu",
+        "description": "Telugu"
+    },
+    "Thai": {
+        "message": "Thai",
+        "description": "Thai"
+    },
+    "Turkish": {
+        "message": "Turkish",
+        "description": "Turkish"
+    },
+    "Ukrainian": {
+        "message": "Ukrainian",
+        "description": "Ukrainian"
+    },
+    "Urdu": {
+        "message": "Urdu",
+        "description": "Urdu"
+    },
+    "Uzbek": {
+        "message": "Uzbek",
+        "description": "Uzbek"
+    },
+    "Vietnamese": {
+        "message": "Vietnamese",
+        "description": "Vietnamese"
+    },
+    "Welsh": {
+        "message": "Welsh",
+        "description": "Welsh"
+    },
+    "Xhosa": {
+        "message": "Xhosa",
+        "description": "Xhosa"
+    },
+    "Yiddish": {
+        "message": "Yiddish",
+        "description": "Yiddish"
+    },
+    "Yoruba": {
+        "message": "Yoruba",
+        "description": "Yoruba"
+    },
+    "Zulu": {
+        "message": "Zulu",
+        "description": "Zulu"
+    },
+    "NETERR": {
+        "message": "Network error! Please check your network connection.",
+        "description": "Network error message."
+    },
+    "NETERR_CODE": {
+        "message": "Error code",
+        "description": "Network error code."
+    },
+    "NETERR_503": {
+        "message": "Request too frequently! Google has blocked your IP address temporarily. Please try again in 30 minutes.",
+        "description": "Network error message for error code 503."
+    },
+    "NETERR_413": {
+        "message": "Translating text too long! Please shorten your translating text and try again.",
+        "description": "Network error message for error code 413."
+    }
+}

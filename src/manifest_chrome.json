@@ -1,0 +1,14 @@
+{
+    "background": {
+        "persistent": false
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Alt+P"
+            }
+        }
+    },
+    "minimum_chrome_version": "55",
+    "homepage_url": "https://github.com/EegeTranslate"
+}
