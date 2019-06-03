@@ -1,3 +1,4 @@
+const TOKEN_PATTERN = /id=['"]token['"] *name=['"]token['"] *value=['"](.*?)['"] *\/>/;
 const ALERT_PATTERN = /alert\(['"](.*?)['"]\);/;
 
 var courses = null;
@@ -6,26 +7,48 @@ var baseFormData = null;
 var courseFrame = document.getElementById("iframename");
 var queryForm = courseFrame.contentWindow.document.getElementById("queryform");
 
+function getToken(callback) {
+    var formData = new FormData();
+    formData.append("pageXklb", baseFormData.get("pageXklb"));
+    formData.append("pageXnxq", baseFormData.get("pageXnxq"));
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "/xsxk/queryXsxkList");
+    request.send(formData);
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                var token = TOKEN_PATTERN.exec(request.responseText)[1];
+                console.log(token);
+                callback(token);
+            }
+        }
+    };
+}
+
 function selectCourse(course) {
     var formData = new FormData();
     var request = new XMLHttpRequest();
     baseFormData.forEach((value, key) => {
         formData.append(key, value);
     });
-
     formData.set("rwh", course.courseNo);
     request.open("POST", "/xsxk/saveXsxk");
-    request.send(formData);
-    request.onreadystatechange = function() {
-        if (request.readyState === 4) {
-            if (request.status === 200) {
-                var msg = ALERT_PATTERN.exec(request.responseText)[1];
-                if (msg.includes("选课成功")) {
-                    course.selected = true;
+
+    getToken(function(token) {
+        formData.set("token", token);
+        request.send(formData);
+        request.onreadystatechange = function() {
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                    var msg = ALERT_PATTERN.exec(request.responseText)[1];
+                    if (msg.includes("选课成功")) {
+                        course.selected = true;
+                    }
                 }
             }
-        }
-    };
+        };
+    });
 }
 
 function watchCourses() {
