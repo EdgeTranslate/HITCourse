@@ -6,6 +6,8 @@ var intervalId = null;
 var baseFormData = null;
 var courseFrame = document.getElementById("iframename");
 var queryForm = courseFrame.contentWindow.document.getElementById("queryform");
+var refreshButton = document.getElementById("person_info2");
+var coursesList = [];
 
 function getToken(callback) {
     var formData = new FormData();
@@ -19,7 +21,6 @@ function getToken(callback) {
         if (request.readyState === 4) {
             if (request.status === 200) {
                 var token = TOKEN_PATTERN.exec(request.responseText)[1];
-                console.log(token);
                 callback(token);
             }
         }
@@ -96,22 +97,32 @@ courseFrame.onload = function() {
     queryForm = courseFrame.contentWindow.document.getElementById("queryform");
     var courseTable = getTable();
     if (courseTable) {
+        var status = coursesList.length === 0; // indicate if query has started  true:not start false: started
         var submit = document.createElement("button");
-        submit.innerText = "开始抢课";
+        if (status) {
+            submit.innerText = "开始抢课";
+        } else {
+            submit.innerText = "结束选课";
+        }
 
         courseTable.childNodes[0].childNodes[1].appendChild(submit);
         submit.onclick = function() {
-            var content = [];
-            // var courseTable = getTable();
-            // if (courseTable) {
+            var status = coursesList.length === 0; // indicate if query has started  true:not start false: started
             for (var i = 1; i < courseTable.children.length; i++) {
                 var tempDiv = courseTable.childNodes[2 * i].childNodes[1].childNodes[1];
-                if (tempDiv.childNodes[0].checked) {
-                    content.push(tempDiv.childNodes[2].id);
+                if (status) {
+                    if (tempDiv.childNodes[0].checked) {
+                        coursesList.push(tempDiv.childNodes[2].id);
+                    }
                 }
             }
-            start(content);
-            // }
+            if (status) {
+                start(coursesList);
+            } else {
+                stop();
+                coursesList = [];
+            }
+            refreshButton.click();
         };
 
         for (var i = 1; i < courseTable.children.length; i++) {
@@ -126,6 +137,11 @@ courseFrame.onload = function() {
             // button.style.cssFloat = "left";
             var tempDiv = courseTable.childNodes[2 * i].childNodes[1].childNodes[1];
             tempDiv.insertBefore(button, tempDiv.firstChild);
+            if (!status) {
+                if (coursesList.indexOf(tempDiv.childNodes[2].id) !== -1) {
+                    tempDiv.childNodes[0].checked = true;
+                }
+            }
         }
     }
 };
