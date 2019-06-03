@@ -6,20 +6,6 @@ var baseFormData = null;
 var courseFrame = document.getElementById("iframename");
 var queryForm = courseFrame.contentWindow.document.getElementById("queryform");
 
-function watchCourses() {
-    var finished = true;
-    courses.forEach(course => {
-        if (!course.selected) {
-            selectCourse(course);
-        }
-        finished = finished & course.selected;
-    });
-
-    if (finished) {
-        clearInterval(intervalId);
-    }
-}
-
 function selectCourse(course) {
     var formData = new FormData();
     var request = new XMLHttpRequest();
@@ -42,26 +28,51 @@ function selectCourse(course) {
     };
 }
 
-chrome.runtime.onMessage.addListener(function(message, sender, callback) {
-    switch (message.type) {
-        case "start":
-            courses = new Array();
-            message.content.forEach(course => {
-                courses.push({ courseNo: course, selected: false });
-            });
-            baseFormData = new FormData(queryForm);
-            intervalId = setInterval(watchCourses, 3000);
-            break;
-        case "stop":
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
-            break;
-        default:
-            break;
-    }
+function watchCourses() {
+    var finished = true;
+    courses.forEach(course => {
+        if (!course.selected) {
+            selectCourse(course);
+        }
+        finished = finished & course.selected;
+    });
 
-    if (callback) {
-        callback();
+    if (finished) {
+        clearInterval(intervalId);
     }
-});
+}
+
+function start(courseNos) {
+    courses = new Array();
+    courseNos.forEach(courseNo => {
+        courses.push({ courseNo: courseNo, selected: false });
+    });
+    baseFormData = new FormData(queryForm);
+    intervalId = setInterval(watchCourses, 3000);
+}
+
+function stop() {
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+}
+
+start(new Array());
+stop();
+
+// chrome.runtime.onMessage.addListener(function(message, sender, callback) {
+//     switch (message.type) {
+//         case "start":
+//             start(message.content);
+//             break;
+//         case "stop":
+//             stop();
+//             break;
+//         default:
+//             break;
+//     }
+
+//     if (callback) {
+//         callback();
+//     }
+// });
