@@ -52,6 +52,12 @@ function selectCourse(course) {
                             refreshButton.click();
                             // eslint-disable-next-line no-console
                             console.log("Course " + course.courseNo + " selected.");
+                            chrome.notifications.create(course.courseNo, {
+                                type: "basic",
+                                iconUrl: "./icon/icon128.png",
+                                title: chrome.i18n.getMessage("AppName"),
+                                message: course.courseNo + "抢课成功"
+                            });
                         }
                     }
                     locked = false;
@@ -81,7 +87,7 @@ function start(courseNos) {
         courses.push({ courseNo: courseNo, selected: false });
     });
     baseFormData = new FormData(queryForm);
-    intervalId = setInterval(watchCourses, 3000);
+    intervalId = setInterval(watchCourses, 5000);
 }
 
 function stop() {
