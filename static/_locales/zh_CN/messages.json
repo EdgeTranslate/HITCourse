@@ -7,6 +7,10 @@
         "message": "便捷翻译，无忧阅读。",
         "description": "应用简介"
     },
+    "CourseSelected": {
+        "message": "抢课成功：",
+        "description": "抢课成功提醒"
+    },
     "ChangeLanguageSetting": {
         "message": "修改翻译语言设定",
         "description": "修改翻译语言设定"

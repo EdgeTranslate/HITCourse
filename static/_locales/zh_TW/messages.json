@@ -7,6 +7,10 @@
         "message": "便捷翻譯，無憂閲讀",
         "description": "應用簡介"
     },
+    "CourseSelected": {
+        "message": "搶課成功：",
+        "description": "搶課成功提醒"
+    },
     "ChangeLanguageSetting": {
         "message": "修改翻譯語言設定",
         "description": "修改翻譯語言設定"

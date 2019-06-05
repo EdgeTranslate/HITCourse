@@ -7,6 +7,10 @@
         "message": "Translate what you want.",
         "description": "App Description"
     },
+    "CourseSelected": {
+        "message": "Course selected: ",
+        "description": "Course selected notification."
+    },
     "ChangeLanguageSetting": {
         "message": "Change language settings",
         "description": "Change language setting"

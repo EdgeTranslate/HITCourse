@@ -52,11 +52,9 @@ function selectCourse(course) {
                             refreshButton.click();
                             // eslint-disable-next-line no-console
                             console.log("Course " + course.courseNo + " selected.");
-                            chrome.notifications.create(course.courseNo, {
-                                type: "basic",
-                                iconUrl: "./icon/icon128.png",
-                                title: chrome.i18n.getMessage("AppName"),
-                                message: course.courseNo + "抢课成功"
+                            chrome.runtime.sendMessage({
+                                type: "course_selected",
+                                content: course.courseNo
                             });
                         }
                     }
